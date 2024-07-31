@@ -5,6 +5,7 @@ const formSchema = new mongoose.Schema({
   lastName: String,
   phoneNumber: String,
   email: String,
+  department: String,
   message: String
 });
 

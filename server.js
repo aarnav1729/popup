@@ -21,6 +21,7 @@ const formSchema = new mongoose.Schema({
   lastName: String,
   phoneNumber: String,
   email: String,
+  department: String,
   message: String
 });
 
@@ -39,9 +40,9 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/submit', async (req, res) => {
-  const { firstName, lastName, phoneNumber, email, message } = req.body;
+  const { firstName, lastName, phoneNumber, email, department, message } = req.body;
 
-  const newFormEntry = new Form({ firstName, lastName, phoneNumber, email, message });
+  const newFormEntry = new Form({ firstName, lastName, phoneNumber, email, department, message });
 
   try {
     await newFormEntry.save();
@@ -64,6 +65,7 @@ app.post('/submit', async (req, res) => {
       Last Name: ${lastName}
       Phone Number: ${phoneNumber}
       Email: ${email}
+      Department: ${department}
       Message: ${message}`
     };
 
